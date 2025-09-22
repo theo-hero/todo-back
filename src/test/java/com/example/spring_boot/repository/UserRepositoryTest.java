@@ -23,7 +23,7 @@ public class UserRepositoryTest {
     @Test
     @Order(1)
     public void saveUser() {
-        User user = User.builder().name("Оля Маркова").nickname("theomark").email("olivertwistyes@gmail.com").build();
+        User user = User.builder().name("Оля Маркова").username("theomark").email("olivertwistyes@gmail.com").build();
         User saved = userRepository.save(user);
 
         assertTrue(saved.getName().equals("Оля Маркова"));

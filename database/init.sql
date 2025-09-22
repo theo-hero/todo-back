@@ -13,10 +13,18 @@ CREATE TABLE IF NOT EXISTS "Tasks" (
 CREATE TABLE IF NOT EXISTS "Users" (
 	"id" serial NOT NULL UNIQUE,
 	"name" varchar(100) NOT NULL,
-	"nickname" varchar(40) NOT NULL,
+	"username" varchar(50) NOT NULL UNIQUE,
+	"password" varchar(500) NOT NULL,
+	"enabled" boolean NOT NULL,
 	"email" varchar(254) NOT NULL,
 	PRIMARY KEY ("id")
 );
+
+CREATE TABLE IF NOT EXISTS "Authorities" (
+	"username" varchar(50) NOT NULL,
+	"authority" varchar(50) NOT NULL,
+	constraint fk_authorities_users foreign key(username) references users(username)
+)
 
 CREATE TABLE IF NOT EXISTS "Teams" (
 	"id" serial NOT NULL UNIQUE,
@@ -44,3 +52,5 @@ ALTER TABLE "Intervals" ADD CONSTRAINT "Intervals_fk1" FOREIGN KEY ("task_of_foc
 ALTER TABLE "Intervals" ADD CONSTRAINT "Intervals_fk4" FOREIGN KEY ("user_id") REFERENCES "Users"("id");
 
 ALTER TABLE tasks ADD CONSTRAINT tasks_status_check CHECK (status IN ('active','completed','archived'));
+
+create unique index ix_auth_username on authorities (username, authority);

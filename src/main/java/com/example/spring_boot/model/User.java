@@ -30,8 +30,12 @@ public class User {
     private Long id;
 
     private String name;
-    private String nickname;
+    private String username;
     private String email;
+    private String password;
+
+    @Builder.Default
+    private boolean enabled = true;
 
     @OneToMany(mappedBy = "createdBy", fetch = FetchType.LAZY)
     @JsonIgnore
