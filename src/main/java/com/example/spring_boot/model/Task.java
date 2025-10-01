@@ -37,7 +37,9 @@ public class Task {
     @JoinColumn(name = "created_by")
     private User createdBy;
 
-    private Long teamId;
+    @ManyToOne
+    @JoinColumn(name = "team_id")
+    private Team team;
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "task_status")

@@ -16,12 +16,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString(exclude = "password")
 @Table(name = "users")
 public class User {
 
@@ -32,9 +34,12 @@ public class User {
     private String name;
     private String username;
     private String email;
+
+    @JsonIgnore
     private String password;
 
     @Builder.Default
+    @JsonIgnore
     private boolean enabled = true;
 
     @OneToMany(mappedBy = "createdBy", fetch = FetchType.LAZY)
