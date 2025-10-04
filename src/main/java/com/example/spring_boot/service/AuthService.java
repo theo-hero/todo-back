@@ -140,6 +140,7 @@ public class AuthService {
                 if (!codesMatch) {
                         codeObj.setAttempts(codeObj.getAttempts() - 1);
                 }
+                codeObj.setUsed(true);
                 return codesMatch;
         }
 }
