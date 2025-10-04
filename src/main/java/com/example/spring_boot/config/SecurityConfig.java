@@ -66,7 +66,7 @@ public class SecurityConfig {
             })
         );
         http.authorizeHttpRequests(authorizeRequests -> authorizeRequests
-                .requestMatchers("/test/**", "/signin", "/signup").permitAll()
+                .requestMatchers("/test/**", "/signin", "/signup/**").permitAll()
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .anyRequest().authenticated());
         http.sessionManagement(
