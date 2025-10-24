@@ -47,8 +47,7 @@ public class JwtUtils {
         return jwt;
     }
 
-    public String generateTokenFromUsername(UserDetails userDetails) {
-        String username = userDetails.getUsername();
+    public String generateTokenFromUsername(String username) {
         int jwtExpirationMs = Integer.parseInt(expStr);
         return Jwts.builder()
                 .subject(username)

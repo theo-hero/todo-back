@@ -9,5 +9,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class LoginResponse {
     private String username;
+    private String name;
+    private String email;
     private List<String> roles;
 }

@@ -35,7 +35,7 @@ public class Task {
 
     @ManyToOne
     @JoinColumn(name = "created_by")
-    private User createdBy;
+    private AppUser createdBy;
 
     @ManyToOne
     @JoinColumn(name = "team_id")
@@ -48,6 +48,14 @@ public class Task {
 
     @CreationTimestamp
     private Instant createdAt;
-    private String estimatedTime;
+    private Long estimatedTime;
     private Instant deadline;
+    private Long duration;
+    private int difficulty;
+    private int urgency;
+    private int importance;
+
+    @ManyToOne
+    @JoinColumn(name="project_id")
+    private Project project;
 }

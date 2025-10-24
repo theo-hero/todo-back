@@ -21,10 +21,8 @@ public class TaskRepositoryTest {
     public void saveTask() {
         Task task = Task.builder()
                 .description("помыть посуду")
-                .createdBy(userRepository.findById(202L).orElse(null))
-                .estimatedTime("0:20").build();
+                .createdBy(userRepository.findById(202L).orElse(null)).build();
 
         Task saved = taskRepository.save(task);
-        assertTrue(saved.getEstimatedTime().equals("0:20"));
     }
 }
